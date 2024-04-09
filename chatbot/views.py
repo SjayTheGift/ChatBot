@@ -1,6 +1,11 @@
+from django.contrib.auth.models import User as UserAuth
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ChatSerializer
+from rest_framework import generics
+from rest_framework.permissions import AllowAny
+
+from .serializers import ChatSerializer, UserSerializer
 from .models import User, Step, Log
 
 @api_view(['POST'])
@@ -33,3 +38,10 @@ def chat_view(request):
         return Response({'response_message': response_message})
     else:
         return Response(serializer.errors, status=400)
+    
+
+# Bonus User Auth
+class CreateUserView(generics.CreateAPIView):
+    queryset = UserAuth.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]

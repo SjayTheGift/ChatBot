@@ -9,6 +9,7 @@ Django application using Django REST Framework that functions as a state machine
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
 - [Tests](#tests)
+- [Generate Security Key](#Generate-Security-key)
 
 ## Prerequisites
 
@@ -80,3 +81,26 @@ The run the following commands, you can copy and paste them
 1. coverage run manage.py test 
 2. coverage report
 ```
+
+## Generate Security key
+
+Please note the security key has been removed and placed on local in my .env file I hope you will also do the same. 
+
+Here are steps you can use to generate a django security key
+
+1. Open a terminal or command prompt.
+2. Activate your Django project's virtual environment (if you are using one).
+3. Run the Python interpreter by typing python or python3 in the terminal.
+4. Import the get_random_secret_key function from Django:
+``` shell
+from django.core.management.utils import get_random_secret_key 
+```
+5. Generate the secret key by calling the get_random_secret_key() function:
+``` shell
+secret_key = get_random_secret_key()
+```
+6. Print the secret key to the console:
+``` shell
+print(secret_key)
+```
+7. Copy the printed secret key and use it in you .env file
